@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+input {
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+button {
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:active {
+    background: #fff;
+    color: #000;
+}
+
+.add-url {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.add-url input {
+    flex: 1;
+}
+
+.url-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.url-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #fff;
+    position: relative;
+}
+
+.url-item img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.url-item a {
+    color: #fff;
+    text-decoration: none;
+    flex: 1;
+    word-break: break-all;
+}
+
+.url-item button {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.error {
+    color: #fff;
+    text-align: center;
+    min-height: 20px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .add-url {
+        flex-direction: column;
+    }
+
+    .url-item {
+        flex-wrap: wrap;
+    }
+}
