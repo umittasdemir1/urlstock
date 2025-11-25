@@ -17,12 +17,35 @@ function login() {
     }
 }
 
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('lastActivity');
+    window.location.href = 'index.html';
+}
+
 function checkAuth() {
     if (window.location.pathname.includes('app.html')) {
         if (localStorage.getItem('loggedIn') !== 'true') {
             window.location.href = 'index.html';
         } else {
+            checkAutoLogout();
+            updateActivity();
             loadUrls();
+        }
+    }
+}
+
+function updateActivity() {
+    localStorage.setItem('lastActivity', Date.now());
+}
+
+function checkAutoLogout() {
+    const lastActivity = localStorage.getItem('lastActivity');
+    if (lastActivity) {
+        const elapsed = Date.now() - parseInt(lastActivity);
+        const thirtyMinutes = 30 * 60 * 1000;
+        if (elapsed > thirtyMinutes) {
+            logout();
         }
     }
 }
@@ -105,5 +128,15 @@ document.addEventListener('keypress', function(e) {
         }
     }
 });
+
+// Aktivite takibi
+if (window.location.pathname.includes('app.html')) {
+    ['click', 'keypress', 'touchstart', 'mousemove'].forEach(event => {
+        document.addEventListener(event, updateActivity, { passive: true });
+    });
+
+    // Her 5 dakikada bir kontrol et
+    setInterval(checkAutoLogout, 5 * 60 * 1000);
+}
 
 checkAuth();

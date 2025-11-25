@@ -54,6 +54,15 @@ button:active {
     color: #000;
 }
 
+.logout-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 14px;
+    z-index: 1000;
+}
+
 .add-url {
     display: flex;
     gap: 10px;
